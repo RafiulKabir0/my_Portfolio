@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-slate-50: 248, 250, 252;
+    --color-slate-100: 241, 245, 249;
+    --color-slate-200: 226, 232, 240;
+    --color-slate-300: 203, 213, 225;
+    --color-slate-400: 148, 163, 184;
+    --color-slate-500: 100, 116, 139;
+    --color-slate-600: 71, 85, 105;
+    --color-slate-700: 51, 65, 85;
+    --color-slate-800: 30, 41, 59;
+    --color-slate-900: 15, 23, 42;
+    --color-slate-950: 2, 6, 23;
+    --color-white: 255, 255, 255;
+    --color-secondary: 255, 255, 255;
+  }
+
+  .dark {
+    /* Backgrounds: 50 -> 900 (15, 23, 42), white/100 -> sleek elevation (22, 32, 51) */
+    --color-slate-50: 15, 23, 42;      /* slate-900 */
+    --color-slate-100: 22, 32, 51;     /* sleek elevation */
+    --color-white: 22, 32, 51;         /* sleek elevation */
+    --color-secondary: 22, 32, 51;     /* sleek elevation */
+    
+    /* Borders: 200 -> 700, 300 -> 600 */
+    --color-slate-200: 51, 65, 85;     /* slate-700 */
+    --color-slate-300: 71, 85, 105;    /* slate-600 */
+    
+    /* Text: 900 -> white, 800 -> 100, 700 -> 200, 600 -> 300, 500 -> 400, 400 -> 500 */
+    --color-slate-400: 100, 116, 139;  /* slate-500 */
+    --color-slate-500: 148, 163, 184;  /* slate-400 */
+    --color-slate-600: 203, 213, 225;  /* slate-300 */
+    --color-slate-700: 226, 232, 240;  /* slate-200 */
+    --color-slate-800: 241, 245, 249;  /* slate-100 */
+    --color-slate-900: 255, 255, 255;  /* pure white */
+    
+    --color-slate-950: 255, 255, 255;  /* pure white */
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white border border-slate-200/60 shadow-premium rounded-2xl transition-all duration-300;
+  }
+  
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm transition-colors duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600;
+  }
+}
+
+/* Custom Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+
