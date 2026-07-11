@@ -60,7 +60,7 @@ const AdminLogin = () => {
     setGeneratedOtp(newOtp);
 
     try {
-      const response = await fetch('http://localhost:5000/api/send-otp', {
+      const response = await fetch('https://my-portfolio-api-gfd3.onrender.com/api/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp: newOtp })
