@@ -17,7 +17,7 @@ const Contact = () => {
     
     try {
       // Use local custom backend to send email directly
-      const response = await fetch('https://my-portfolio-api-gfd3.onrender.com/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

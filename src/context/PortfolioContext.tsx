@@ -18,7 +18,7 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   useEffect(() => {
     // Fetch data from local json-server database
-    fetch('https://my-portfolio-api-gfd3.onrender.com')
+    fetch('/api/portfolio')
       .then(res => res.json())
       .then(fetchedData => {
         // Deep merge to ensure no missing fields if db is outdated
@@ -45,7 +45,7 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
     setData(newData); // Optimistic UI update
     
     try {
-      await fetch('https://my-portfolio-api-gfd3.onrender.com/portfolio', {
+      await fetch('/api/portfolio', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
