@@ -52,7 +52,7 @@ app.put('/api/portfolio', async (req, res) => {
 // POST /api/contact
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
-  
+
   const db = await readDB();
   const emailConfig = db.portfolio?.emailConfig || {};
   const user = emailConfig.user || process.env.EMAIL_USER;
@@ -65,8 +65,8 @@ app.post('/api/contact', async (req, res) => {
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
       user,
       pass,
@@ -91,7 +91,7 @@ app.post('/api/contact', async (req, res) => {
 // POST /api/send-otp
 app.post('/api/send-otp', async (req, res) => {
   const { email, otp } = req.body;
-  
+
   const db = await readDB();
   const emailConfig = db.portfolio?.emailConfig || {};
   const user = emailConfig.user || process.env.EMAIL_USER;
@@ -104,14 +104,19 @@ app.post('/api/send-otp', async (req, res) => {
 
   // Security check: only send OTP to the admin's email
   const adminEmail = db.portfolio?.personal?.email;
-  
+
   if (email !== adminEmail) {
     return res.status(403).json({ error: 'Unauthorized email address' });
   }
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user, pass },
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user,
+      pass,
+    },
   });
 
   try {
